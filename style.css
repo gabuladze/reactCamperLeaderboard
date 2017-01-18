@@ -15,7 +15,7 @@ table, td, td, th, nav {
   border-color: #4d4d4d !important;
 }
 
-nav span {
+nav span, a {
   color: #eee !important;
 }
 
