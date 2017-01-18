@@ -5,11 +5,28 @@ import getTopCampers from '../services/CamperService';
 class Leaderboard extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       campers: []
     };
 
     getTopCampers(campers => this.setState({ campers: campers }));
+  }
+
+  sortByRecent() {
+    let campers = this.state.campers.sort((a, b) => {
+      return b.recent - a.recent;
+    });
+
+    this.setState({ campers: campers });
+  }
+
+  sortByAllTime() {
+    let campers = this.state.campers.sort((a, b) => {
+      return b.alltime - a.alltime;
+    });
+
+    this.setState({ campers: campers });
   }
 
   render() {
@@ -20,8 +37,8 @@ class Leaderboard extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Points in past 30 days</th>
-              <th>Total points</th>
+              <th onClick={this.sortByRecent.bind(this)}>Points in past 30 days</th>
+              <th onClick={this.sortByAllTime.bind(this)}>Total points</th>
             </tr>
           </thead>
           <tbody>
