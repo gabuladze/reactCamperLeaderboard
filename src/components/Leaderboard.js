@@ -7,7 +7,8 @@ class Leaderboard extends React.Component {
     super(props);
 
     this.state = {
-      campers: []
+      campers: [],
+      sortedBy: ''
     };
 
     getTopCampers(campers => this.setState({ campers: campers }));
@@ -18,7 +19,12 @@ class Leaderboard extends React.Component {
       return b.recent - a.recent;
     });
 
-    this.setState({ campers: campers });
+    this.setState(
+      {
+        campers: campers,
+        sortedBy: 'recent'
+      }
+    );
   }
 
   sortByAllTime() {
@@ -26,7 +32,12 @@ class Leaderboard extends React.Component {
       return b.alltime - a.alltime;
     });
 
-    this.setState({ campers: campers });
+    this.setState(
+      {
+        campers: campers,
+        sortedBy: 'alltime'
+      }
+    );
   }
 
   render() {
@@ -37,8 +48,14 @@ class Leaderboard extends React.Component {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th onClick={this.sortByRecent.bind(this)}>Points in past 30 days</th>
-              <th onClick={this.sortByAllTime.bind(this)}>Total points</th>
+              <th onClick={this.sortByRecent.bind(this)} className={this.state.sortedBy === 'recent' ? 'sorted' : ''}>
+                Points in past 30 days
+                {(this.state.sortedBy === 'recent') && <span className="glyphicon glyphicon-chevron-down"></span>}
+              </th>
+              <th onClick={this.sortByAllTime.bind(this)} className={this.state.sortedBy === 'alltime' ? 'sorted' : ''}>
+                Total points
+                {(this.state.sortedBy === 'alltime') && <span className="glyphicon glyphicon-chevron-down"></span>}
+              </th>
             </tr>
           </thead>
           <tbody>
