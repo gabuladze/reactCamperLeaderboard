@@ -65,8 +65,8 @@ class Leaderboard extends React.Component {
             {
               this.state.campers.map((camper, index) => {
                 return (
-                  <tr key={index}>
-                    <th scope="row">{index}</th>
+                  <tr key={index + 1}>
+                    <th scope="row">{index + 1}</th>
                     <td><img src={camper.img} />{camper.username}</td>
                     <td>{camper.recent}</td>
                     <td>{camper.alltime}</td>
