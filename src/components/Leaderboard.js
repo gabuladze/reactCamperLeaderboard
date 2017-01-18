@@ -14,6 +14,7 @@ class Leaderboard extends React.Component {
     getTopCampers(campers => this.setState({ campers: campers }));
   }
 
+  // Sort campers by points from last 30 days
   sortByRecent() {
     let campers = this.state.campers.sort((a, b) => {
       return b.recent - a.recent;
@@ -27,6 +28,8 @@ class Leaderboard extends React.Component {
     );
   }
 
+
+  // Sort campers by points from all time
   sortByAllTime() {
     let campers = this.state.campers.sort((a, b) => {
       return b.alltime - a.alltime;
