@@ -8,6 +8,7 @@ img {
 body, nav {
   background-color: #222 !important;
   color: #eee !important;
+  padding-bottom: 10px;
 }
 
 table, td, td, th, nav {
