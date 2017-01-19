@@ -1,4 +1,4 @@
-# reactCamper Leaderboard
+# reactCamperLeaderboard
 Camper Leaderboard project for Free Code Camp
 
 ### Instructions
